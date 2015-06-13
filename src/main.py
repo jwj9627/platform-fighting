@@ -33,6 +33,11 @@ def main():
     player.create_sword()
     player2.create_sword()
     
+    #Load menu music
+    #pygame.mixer.music.load('resources\music\Dark Ambience.ogg')
+    pygame.mixer.music.load('resources\music\Last_Man_Standing.ogg')
+    pygame.mixer.music.play()
+    
     menu = Menus(screen)
     
     # If settings is one camera will be None else a camera is created
@@ -68,9 +73,12 @@ def main():
     active_sprite_list.add(player2)
     if camera is not None: active_sprite_list.add(camera)
 
-    #Loop sounds
+    #Load sounds
     sword_sound = pygame.mixer.Sound('resources/sounds/sword_sound.wav') 
-   
+    laser_sound = pygame.mixer.Sound('resources/sounds/laser_sound.ogg') 
+    
+    set_music(current_level_no)
+    
     # Loop until the user clicks the close button
     done = False
     
@@ -95,10 +103,12 @@ def main():
                         player.drop()
                     if event.key == pygame.K_f:
                         if player.sufficient_stamina(1):
+                            laser_sound.play()
                             laser = player.range_attack()
                             active_sprite_list.add(laser)
                             projectile_sprite_list.add(laser)
                             current_level.projectile_list.append(laser)
+                            
                     if event.key == pygame.K_t:
                         player.attacking = True
                         sword_sound.play()
@@ -120,6 +130,7 @@ def main():
                         player2.drop()
                     if event.key == pygame.K_l:
                         if player2.sufficient_stamina(1):
+                            laser_sound.play()
                             laser = player2.range_attack()
                             active_sprite_list.add(laser)
                             projectile_sprite_list.add(laser)
@@ -194,9 +205,20 @@ def main():
             current_level = level_list[current_level_no]
             player.level = current_level
             player2.level = current_level
+            set_music(current_level_no)
             reset_players(player, player2, camera)
 
+def set_music(current_level_no):
+    pygame.mixer.music.stop()
     
+    if current_level_no == 0:
+        pygame.mixer.music.load('resources\music\day_60.ogg')
+    else:
+        pygame.mixer.music.load('resources\music\Data_Corruption.ogg')
+    
+    pygame.mixer.music.set_volume(0.8)
+    pygame.mixer.music.play()
+
 def reset_players(player, player2, camera):
     player.rect.x = 200
     player.rect.y = 500

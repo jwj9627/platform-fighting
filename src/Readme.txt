@@ -7,7 +7,7 @@ Controls
 			2 - option 2
 			
 		Camera Option 1:
-			The map will shift according to the position of player 1. Player 2 is able to go off screen
+			The map will shift according to the position of player 1
 		
 		Camera Option 2:
 			The map will shift according to the position halfway between both players.
@@ -40,5 +40,15 @@ Controls
 		
 Credits
 -------------------
-	1001.com
-	www.kenney.nl
+	Art:
+		1001.com
+		www.kenney.nl
+	
+	Music:
+        FoxSynergy
+        http://marksparling.com/
+        
+	Sounds:
+		qubodup
+		Skorpio
+		

@@ -31,7 +31,7 @@ class Laser(Projectile):
             speed: movement speed of the laser
             range: the distance the laser can move before it is destroyed
             dmg: laser does 15 damage. As it travels the damage is does is 
-                 increased by 1.1
+                 increased by 1.3
     """
     
     speed = 35
@@ -40,7 +40,7 @@ class Laser(Projectile):
     
     def update(self):
         self.move()
-        self.dmg += 1.1
+        self.dmg += 1.3
         
     def move(self):
         if self.direction == 'R':
